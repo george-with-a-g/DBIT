@@ -191,55 +191,23 @@
               });
             }
             const questions = [
-                  {
-                    "question": "What is the primary function of DNA?",
-                    "question_choices": [
-                      { "choice": "Protein synthesis", "correct": false, "image": null },
-                      { "choice": "Genetic information storage", "correct": true, "image": null },
-                      { "choice": "Cellular energy production", "correct": false, "image":null  },
-                      { "choice": "Lipid metabolism", "correct": false, "image": null }
+                {% for question in questions %}
+                {
+                    "question" : "{{ question.question }}",
+                    "question_choices" : [
+                        {% for choice in question.questionchoice_set.all %}
+                            {
+                                "choice" : "{{choice.choice}}",
+                                "correct" : {% if choice.correct %} true {% else %} false {% endif %},
+                                "image" :  {% if choice.image %}"{{choice.image.url}}" {% else %} null {% endif %}
+                            },
+                        {% endfor %}
                     ]
-                  },
-                  {
-                    "question": "Which nitrogenous base is unique to DNA and not found in RNA?",
-                    "question_choices": [
-                      { "choice": "Adenine", "correct": false, "image": null },
-                      { "choice": "Guanine", "correct": false, "image": null },
-                      { "choice": "Thymine", "correct": true, "image": null },
-                      { "choice": "Uracil", "correct": false, "image": null }
-                    ]
-                  },
-                  {
-                    "question": "What is the term for the process of copying DNA to create an identical DNA molecule?",
-                    "question_choices": [
-                      { "choice": "Transcription", "correct": false, "image": null },
-                      { "choice": "Translation", "correct": false, "image": null },
-                      { "choice": "Replication", "correct": true, "image": null },
-                      { "choice": "Mutation", "correct": false, "image": null }
-                    ]
-                  },
-                  {
-                    "question": "Which of the following describes the structure of DNA?",
-                    "question_choices": [
-                      { "choice": "Single-stranded helix", "correct": false, "image": null },
-                      { "choice": "Double-stranded helix", "correct": true, "image": null },
-                      { "choice": "Linear protein chain", "correct": false, "image": null },
-                      { "choice": "Circular lipid bilayer", "correct": false, "image": null }
-                    ]
-                  },
-                    {
-                    "question": "What are the building blocks of DNA?",
-                    "question_choices": [
-                      { "choice": "Amino Acids", "correct": false, "image": null },
-                      { "choice": "Fatty Acids", "correct": false, "image": null },
-                      { "choice": "Nucleotides", "correct": true, "image": null },
-                      { "choice": "Monosaccharides", "correct": false, "image": null }
-                    ]
-                  }
+                },
+                {% endfor %}
+                
             ]
-            console.log("x0")
             populateQuestions(questions)
-            console.log("x2")
             let rightSound = document.getElementById("right");
             let wrongSound = document.getElementById("wrong");
             let typeSound = document.getElementById("type");
@@ -284,6 +252,7 @@
                 parent.find(".answer.is--right").css("display", "flex");
                 $(this).find(".option_icon.is--check").css("display", "block");
                 parent.addClass("answered-correct");
+                  console.log("answered correct")
                 rightSound.play();
               } else {
                 parent.find(".answer.is--wrong").css("display", "flex");

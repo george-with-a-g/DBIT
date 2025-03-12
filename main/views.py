@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .models import Question
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    questions = Question.objects.all()
+    context = {
+        'questions' : questions
+    }
+    return render(request, 'main/index.html', context)
 
