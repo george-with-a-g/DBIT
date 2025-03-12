@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 class Question(models.Model):
     question = models.CharField(max_length=400, null=True, blank=True)
+    def __str__(self):
+        return f"{self.question}"
 
 class QuestionChoice(models.Model):
     choice = models.CharField(max_length=400)
