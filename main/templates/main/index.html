@@ -193,11 +193,11 @@
             const questions = [
                 {% for question in questions %}
                 {
-                    "question" : "{{ question.question }}",
+                    "question" : "{{ question.question|safe }}",
                     "question_choices" : [
                         {% for choice in question.questionchoice_set.all %}
                             {
-                                "choice" : "{{choice.choice}}",
+                                "choice" : "{{choice.choice|safe}}",
                                 "correct" : {% if choice.correct %} true {% else %} false {% endif %},
                                 "image" :  {% if choice.image %}"{{choice.image.url}}" {% else %} null {% endif %}
                             },
