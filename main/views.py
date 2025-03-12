@@ -3,7 +3,7 @@ from .models import Question
 
 # Create your views here.
 def index(request):
-    questions = Question.objects.all()
+    questions = Question.objects.order_by('?').all()[:5]
     context = {
         'questions' : questions
     }
