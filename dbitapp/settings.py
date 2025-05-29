@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'allauth',
-    'allauth.account'
+    # 'allauth',
+    # 'allauth.account'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'allauth.account.middleware.AccountMiddleware'
+    # 'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'dbitapp.urls'
@@ -69,17 +69,19 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'django.template.context_processors.request'
+                # 'django.template.context_processors.request'
             ],
         },
     },
 ]
 
+"""
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+"""
 
 WSGI_APPLICATION = 'dbitapp.wsgi.application'
 
