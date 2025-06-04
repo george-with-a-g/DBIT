@@ -1,6 +1,33 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+class ExtraUserInfo(models.Model):
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+
+    school_id = models.CharField(max_length=100, null=True)
+    gender = models.CharField(max_length=100, null=True)
+    user_national_id_number = models.CharField(max_length=100, null=True)
+    user_passport_number = models.CharField(max_length=100, null=True)
+
+    institution_name = models.CharField(max_length=100, null=True)
+
+    parent_first_name = models.CharField(max_length=100, null=True)
+    parent_second_name = models.CharField(max_length=100, null=True)
+    parent_email = models.CharField(max_length=100, null=True)
+    parent_national_id_number = models.CharField(max_length=100, null=True)
+    parent_passport_number = models.CharField(max_length=100, null=True)
+
+
+class UserType(models.Model):#Types ranging from student, institution, educator
+    type_name = models.CharField(max_length=100, null=False)
+    type_description = models.CharField(max_length=1000, null=True, blank=True)
+
+class UserTypeAllocation(models.Model):
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    user_type = models.ForeignKey(UserType, null=False, on_delete=models.CASCADE)
+
 class Course(models.Model):
     name = models.CharField(max_length=400, null=True, blank=True)
     def __str__(self):

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/core.min.css"/>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/utilities.min.css"/>
+    <script>
+      const htmlElement = document.documentElement;
+      const __FRANKEN__ = JSON.parse(
+        localStorage.getItem("__FRANKEN__") || "{}"
+      );
+      if (
+        __FRANKEN__.mode === "dark" ||
+        (!__FRANKEN__.mode &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        htmlElement.classList.add("dark");
+      } else {
+        //htmlElement.classList.add("dark");
+        htmlElement.classList.remove("dark");
+      }
+      htmlElement.classList.add(__FRANKEN__.theme || "uk-theme-zinc");
+      htmlElement.classList.add(__FRANKEN__.radii || "uk-radii-md");
+      htmlElement.classList.add(__FRANKEN__.shadows || "uk-shadows-sm");
+      htmlElement.classList.add(__FRANKEN__.font || "uk-font-sm");
+      htmlElement.classList.add(__FRANKEN__.chart || "uk-chart-default");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/core.iife.js"type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/icon.iife.js"type="module"></script>
+</head>
+<body>
+  <div class="uk-container">
+
+    <form class="uk-card max-w-sm"method="post"action="/auth/login/">
+      {% csrf_token %}
+      <div class="uk-card-header">
+        <h3 class="uk-card-title">Welcome Back</h3>
+        <p class="mt-2 text-muted-foreground">
+           We're happy to see you. 
+        </p>
+      </div>
+      <div class="uk-card-body">
+
+        <div class="">
+          <div class="uk-form-controls mt-2">
+            <input name="username" class="uk-input"id="name"type="text"aria-describedby="name-help-block"placeholder="Username*"/>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="uk-form-controls mt-2">
+            <input name="password" class="uk-input"id="password"type="password"aria-describedby="name-help-block"placeholder="Password*"/>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="uk-card-footer justify-between">
+        <button class="uk-btn uk-btn-primary mt-2" type="submit">Login</button>
+        <p class="mt-2 text-muted-foreground">Don't have an account? <a class="uk-link" href="{% url 'auth-signup' %}">Sign Up.</a> </p>
+        <!--<button class="uk-btn uk-btn-default">Cancel</button>-->
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>
