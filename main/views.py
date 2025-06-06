@@ -22,7 +22,13 @@ def signup(request):
         surname = request.POST.get('surname')
         lastname = request.POST.get('lastname')
         dateofbirth = request.POST.get('dob')
+        education = request.POST.get('education')
+        accounttype = request.POST.getlist('accounttype[]')
         print(f"Email is {email}, First Name is {firstname}, Surname is {surname} and Last Name is {lastname} and date of birth is {dateofbirth}")
+        print(f"Education is {education} and accounttype is {accounttype}.")
+        print(request.POST)
+        print(accounttype)
+        print("###########################################")
     return render(request, 'main/authentication/signup2.html')
 
 def login(request):

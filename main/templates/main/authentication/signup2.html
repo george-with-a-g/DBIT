@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SignUp</title>
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/core.min.css"/>
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/utilities.min.css"/>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/css/core.min.css"/>
+    <!--<link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/core.min.css"/>-->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/css/utilities.min.css"/>
+    <!--<link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/css/utilities.min.css"/>-->
     <script>
       const htmlElement = document.documentElement;
       const __FRANKEN__ = JSON.parse(
@@ -29,83 +31,87 @@
       htmlElement.classList.add(__FRANKEN__.font || "uk-font-sm");
       htmlElement.classList.add(__FRANKEN__.chart || "uk-chart-default");
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/core.iife.js"type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/icon.iife.js"type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/js/core.iife.js"type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/js/icon.iife.js"type="module"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/core.iife.js"type="module"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0-next.6/dist/js/icon.iife.js"type="module"></script>-->
 </head>
 <body>
-  <div class="uk-container">
+  <div style="width: 100vw; min-height: 100vh; background-color: #18181b;">
+    <div class="uk-container" style="min-height: 100vh; width: 100%;">
 
-    <form class="uk-card max-w-sm"method="post"action="/auth/signup/">
-      {% csrf_token %}
-      <div class="uk-card-header">
-        <h3 class="uk-card-title">Create an account</h3>
-        <p class="mt-2 text-muted-foreground">
-           Enter your email below to create your account 
-        </p>
-      </div>
-      <div class="uk-card-body">
+      <form style="height: fit-content; margin-top: 80px;" class="uk-card max-w-sm uk-position-center-horizontal"method="post"action="/auth/signup/">
+        {% csrf_token %}
+        <div class="uk-card-header">
+          <h3 class="uk-card-title">Create an account</h3>
+          <p class="mt-2 text-muted-foreground">
+             Enter your email below to create your account 
+          </p>
+        </div>
+        <div class="uk-card-body">
 
-        <div class="">
-          <div class="uk-form-controls mt-2">
-            <input name="email" class="uk-input"id="name"type="text"aria-describedby="name-help-block"placeholder="Email*"/>
+          <div class="">
+            <div class="uk-form-controls mt-2">
+              <input name="email" class="uk-input"id="name"type="text"aria-describedby="name-help-block"placeholder="Email*"/>
+            </div>
           </div>
-        </div>
 
-        <div class="">
-          <div class="uk-form-controls mt-2">
-            <input name="firstname" class="uk-input"id="firstname"type="text"aria-describedby="name-help-block"placeholder="First Name*"/>
+          <div class="">
+            <div class="uk-form-controls mt-2">
+              <input name="firstname" class="uk-input"id="firstname"type="text"aria-describedby="name-help-block"placeholder="First Name*"/>
+            </div>
           </div>
-        </div>
 
-        <div class="">
-          <div class="uk-form-controls mt-2">
-            <input name="surname" class="uk-input"id="surname"type="text"aria-describedby="name-help-block"placeholder="Surname*"/>
+          <div class="">
+            <div class="uk-form-controls mt-2">
+              <input name="surname" class="uk-input"id="surname"type="text"aria-describedby="name-help-block"placeholder="Surname*"/>
+            </div>
           </div>
-        </div>
 
-        <div class="">
-          <div class="uk-form-controls mt-2">
-            <input name="lastname" class="uk-input"id="lastname"type="text"aria-describedby="name-help-block"placeholder="Last Name*"/>
+          <div class="">
+            <div class="uk-form-controls mt-2">
+              <input name="lastname" class="uk-input"id="lastname"type="text"aria-describedby="name-help-block"placeholder="Last Name*"/>
+            </div>
           </div>
-        </div>
 
-        <div class="h-10 mt-2">
-          <label class="uk-form-label" for="name">Date of Birth</label>
-          <uk-input-date name="dob" cls-custom="uk-input-fake"></uk-input-date>
-        </div>
-
-        <div class="mt-4">
-          <label class="uk-form-label" for="framework">Level of Education</label>
-          <div class="uk-form-controls mt-2">
-            <select class="uk-select" name="framework">
-              <option value="primary">Primary</option>
-              <option value="secondary" selected>Secondary</option>
-              <option value="university" selected>University</option>
-            </select>
+          <div class="h-10 mt-2">
+            <label class="uk-form-label" for="name">Date of Birth</label>
+            <uk-input-date name="dob" cls-custom="uk-input-fake"></uk-input-date>
           </div>
-        </div>
 
-        <div class="mt-4">
-          <label class="uk-form-label" for="framework">Account Type</label>
-          <div class="h-10">
-            <uk-select cls-custom="button: uk-input-fake w-full; dropdown: w-full" multiple name="accounttype" >
-              <select hidden>
-                <option value="student">Student</option>
-                <option value="institution">Institution</option>
-                <option value="instructor">Instructor</option>
+          <div class="mt-4">
+            <label class="uk-form-label" for="framework">Level of Education</label>
+            <div class="uk-form-controls mt-2">
+              <select class="uk-select" name="education">
+                <option value="primary">Primary</option>
+                <option value="secondary" selected>Secondary</option>
+                <option value="university" selected>University</option>
               </select>
-            </uk-select>
+            </div>
           </div>
+
+          <div class="mt-4">
+            <label class="uk-form-label" for="framework">Account Type</label>
+            <div class="h-10">
+              <uk-select name="accounttype" cls-custom="button: uk-input-fake w-full; dropdown: w-full" multiple>
+                <select hidden>
+                  <option value="instructor">Instructor</option>
+                  <option value="student">Student</option>
+                  <option value="institution">Institution</option>
+                </select>
+              </uk-select>
+            </div>
+          </div>
+
         </div>
 
-      </div>
+        <div class="uk-card-footer justify-between">
+          <button class="uk-btn uk-btn-primary mt-2" type="submit">Sign Up</button>
+          <p class="mt-2 text-muted-foreground">Already have an account? <a class="uk-link" href="{% url 'auth-login' %}">Login</a> </p>
+        </div>
+      </form>
 
-      <div class="uk-card-footer justify-between">
-        <button class="uk-btn uk-btn-primary mt-2" type="submit">Sign Up</button>
-        <p class="mt-2 text-muted-foreground">Already have an account? <a class="uk-link" href="{% url 'auth-login' %}">Login</a> </p>
-      </div>
-    </form>
-
+    </div>
   </div>
 </body>
 </html>
