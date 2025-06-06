@@ -19,6 +19,9 @@ class ExtraUserInfo(models.Model):
     parent_national_id_number = models.CharField(max_length=100, null=True)
     parent_passport_number = models.CharField(max_length=100, null=True)
 
+    date_of_birth = models.DateTimeField(null=True, blank=True)
+    surname = models.CharField(max_length=100, null=True)
+
 
 class UserType(models.Model):#Types ranging from student, institution, educator
     type_name = models.CharField(max_length=100, null=False)
