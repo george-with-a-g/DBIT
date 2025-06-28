@@ -15,6 +15,9 @@ def index(request):
     }
     return render(request, 'main/index.html', context)
 
+def dashboard(request):
+    return render(request, 'main/dashboard/dashboard.html')
+
 def signupold(request):
     return render(request, 'main/authentication/index.html')
 

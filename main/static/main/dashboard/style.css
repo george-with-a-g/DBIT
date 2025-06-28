@@ -1,0 +1,8 @@
+*{
+  /*font-family: "Inter", sans-serif;*/
+  font-family: "Geist", sans-serif;
+}
+
+.trending-border{
+  border-color: oklch(26.9% 0 0);
+}
