@@ -54,3 +54,8 @@ class QuestionChoice(models.Model):
     image = models.ImageField(upload_to='choiceimage/', blank=True, null=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
+class UserTest(models.Model):
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    test_time = models.DateTimeField(auto_now_add=True)
+
+
