@@ -58,4 +58,9 @@ class UserTest(models.Model):
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     test_time = models.DateTimeField(auto_now_add=True)
 
+class UserTestQuestion(models.Model):
+    test = models.ForeignKey(UserTest, null=False, on_delete=models.CASCADE)
+    correct_answer = models.BooleanField()
+
+
 
