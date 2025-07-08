@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import QuestionChoice, Question, ExtraUserInfo, UserType, UserTypeAllocation, Course, Topic
+from .models import QuestionChoice, Question, ExtraUserInfo, UserType, UserTypeAllocation, Course, Topic, UserTest, UserTestQuestion
 
 # Register your models here.
 admin.site.register(Question)
@@ -20,3 +20,5 @@ admin.site.register(UserTypeAllocation, UserTypeAllocationAdmin)
 admin.site.register(Course)
 admin.site.register(Topic)
 
+admin.site.register(UserTest)
+admin.site.register(UserTestQuestion)
