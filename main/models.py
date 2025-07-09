@@ -62,5 +62,8 @@ class UserTestQuestion(models.Model):
     test = models.ForeignKey(UserTest, null=False, on_delete=models.CASCADE)
     correct_answer = models.BooleanField()
 
-
+class UserAverageScore(models.Model):
+    #Get the average score of all tests over time.
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    average_score = models.IntegerField()
 
