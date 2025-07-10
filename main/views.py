@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -160,3 +161,5 @@ def auth(request):
 
     return render(request, 'main/authentication/index.html')
 
+def log_test_score(request):
+    return JsonResponse({"work":"success"})

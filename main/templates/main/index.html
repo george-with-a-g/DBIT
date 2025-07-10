@@ -205,7 +205,6 @@
                     ]
                 },
                 {% endfor %}
-                
             ]
             populateQuestions(questions)
             let rightSound = document.getElementById("right");
@@ -242,6 +241,68 @@
                 $(".button_face.is--sad").css("display", "block");
               }
             }
+
+            async function sendQuizResults(url, answeredQuestionsData, score) {
+              try {
+                // Construct the payload to be sent in the POST request body.
+                // It's good practice to send data in JSON format.
+                const payload = {
+                  answered_questions: answeredQuestionsData,
+                  score: score,
+                  // You might want to add more data here, e.g., userId, quizId, timestamp.
+                  // userId: 'user123', // Example: if you have a user ID
+                  // quizId: 'quizABC', // Example: if you have a quiz ID
+                  // timestamp: new Date().toISOString() // Example: current time
+                };
+
+                console.log("Sending quiz results to:", url);
+                console.log("Payload:", payload);
+
+                // Send the POST request using the Fetch API.
+                const response = await fetch(url, {
+                  method: 'POST', // Specify the HTTP method as POST.
+                  headers: {
+                    'Content-Type': 'application/json', // Indicate that the body is JSON.
+                    'X-CSRFToken': getCookie('csrftoken') // Important for Django: include CSRF token.
+                  },
+                  body: JSON.stringify(payload) // Convert the JavaScript object to a JSON string.
+                });
+
+                // Check if the request was successful (status code 2xx).
+                if (response.ok) {
+                  const result = await response.json(); // Parse the JSON response from the server.
+                  console.log("Quiz results sent successfully:", result);
+                  // You can add further actions here, e.g., show a success message to the user.
+                } else {
+                  // If the response was not OK, throw an error with the status.
+                  const errorText = await response.text();
+                  console.error(`Failed to send quiz results. Status: ${response.status}, Response: ${errorText}`);
+                  // Handle different error statuses if needed (e.g., 400 Bad Request, 500 Internal Server Error).
+                  // You might want to display an error message to the user.
+                }
+              } catch (error) {
+                console.error("An error occurred while sending quiz results:", error);
+                // Handle network errors or other exceptions.
+                // Display a user-friendly error message.
+              }
+            }
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
             updateAnswerCount();
                         
             $(".option").on("click", function () {
@@ -268,6 +329,8 @@
                 setTimeout(() => {
                   $(".hero").addClass("is--complete");
                   $('body').css('overflow', 'hidden');
+
+                  
                 }, 2800);
               }
             });
