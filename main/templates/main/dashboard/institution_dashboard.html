@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/dashboard/style.css' %}" />
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/css/core.min.css"/>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/css/utilities.min.css"/>
+    <script>
+      const htmlElement = document.documentElement;
+      const __FRANKEN__ = JSON.parse(
+        localStorage.getItem("__FRANKEN__") || "{}"
+      );
+      if (
+        __FRANKEN__.mode === "dark" ||
+        (!__FRANKEN__.mode &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+      htmlElement.classList.add(__FRANKEN__.theme || "uk-theme-zinc");
+      htmlElement.classList.add(__FRANKEN__.radii || "uk-radii-md");
+      htmlElement.classList.add(__FRANKEN__.shadows || "uk-shadows-sm");
+      htmlElement.classList.add(__FRANKEN__.font || "uk-font-sm");
+      htmlElement.classList.add(__FRANKEN__.chart || "uk-chart-default");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/js/core.iife.js"type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/franken-ui@2.0.0/dist/js/icon.iife.js"type="module"></script>
+</head>
+<body>
+  <div class="uk-card uk-flex" style="margin: 20px; padding-top: 10px;">
+    <div class="" style="width: 20%;">
+      <h3 class="py-2 uk-card-title" style="margin-left: 8px;">Menu</h3>
+      <hr class="uk-hr mt-2" style="width:100%;" />
+      <div>
+        <p class="text-sm font-semibold text-gray-400 uppercase mb-2">Home</p>
+        <nav class="space-y-1">
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800">
+            <i class="lucide lucide-layout-dashboard w-5 h-5"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800">
+            <i class="lucide lucide-repeat w-5 h-5"></i>
+            <span>Lifecycle</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800">
+            <i class="lucide lucide-bar-chart w-5 h-5"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800">
+            <i class="lucide lucide-folder w-5 h-5"></i>
+            <span>Projects</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800">
+            <i class="lucide lucide-users w-5 h-5"></i>
+            <span>Team</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <hr class="uk-divider-vertical" style="height: auto;" />
+    <div class="" style="width: 100%; padding-left: 2px;">
+      <h3 class="py-2 uk-card-title" style="margin-left: 8px;">Dashboard</h3>
+
+      <hr class="uk-hr mt-2 mb-2" style="width:100%;" />
+
+      <div class="uk-flex">
+
+        <!-- max-w-xs -->
+        <div class="uk-card uk-card-body w-full mr-2">
+          <div class="uk-flex justify-between items-center">
+            <h3 class="text-xs text-muted-foreground">Total Classes</h3>
+            <span style="opacity:0;" class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-gray-800 text-white text-xs font-medium border trending-border">
+              <div class="size-4">
+                <uk-icon icon="trending-up"></uk-icon>
+              </div>
+              +12.5%
+            </span>
+          </div>
+          <h3 class="py-2 text-2xl font-semibold">7</h3>
+          <div class="uk-flex items-center">
+            <h3 class="text-xm">&nbsp;</h3>
+            <!--
+            <div class="size-4 ml-2">
+              <uk-icon icon="trending-up"></uk-icon>
+            </div>
+            -->
+          </div>
+          <p class="text-sm text-muted-foreground mb-2">Total classes you are partaking in.</p>
+        </div>
+
+        <div class="uk-card uk-card-body w-full mr-2">
+          <div class="uk-flex justify-between items-center">
+            <h3 class="text-xs text-muted-foreground">Average Score</h3>
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-gray-800 text-white text-xs font-medium border trending-border">
+              <div class="size-4">
+                <uk-icon icon="trending-down"></uk-icon>
+              </div>
+              -20.0%
+            </span>
+          </div>
+          <h3 class="py-2 text-2xl font-semibold">$1,250.00</h3>
+          <div class="uk-flex items-center">
+            <h3 class="text-xm">Down 20% this period.</h3>
+            <div class="size-4 ml-2">
+              <uk-icon icon="trending-down"></uk-icon>
+            </div>
+          </div>
+          <p class="text-sm text-muted-foreground mb-2">Average score in tests in the past 6 months.</p>
+        </div>
+
+        <div class="uk-card uk-card-body w-full mr-2">
+          <div class="uk-flex justify-between items-center">
+            <h3 class="text-xs text-muted-foreground">Tests Today</h3>
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-gray-800 text-white text-xs font-medium border trending-border">
+              <div class="size-4">
+                <uk-icon icon="trending-down"></uk-icon>
+              </div>
+              -20.0%
+            </span>
+          </div>
+          <h3 class="py-2 text-2xl font-semibold">$1,250.00</h3>
+          <div class="uk-flex items-center">
+            <h3 class="text-xm">Down 20% this period.</h3>
+            <div class="size-4 ml-2">
+              <uk-icon icon="trending-down"></uk-icon>
+            </div>
+          </div>
+          <p class="text-sm text-muted-foreground mb-2">Tests done in the past 24 hours.</p>
+        </div>
+
+        <div class="uk-card uk-card-body w-full mr-2">
+          <div class="uk-flex justify-between items-center">
+            <h3 class="text-xs text-muted-foreground">Daily Streak</h3>
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-gray-800 text-white text-xs font-medium border trending-border">
+              <div class="size-4">
+                <uk-icon icon="trending-down"></uk-icon>
+              </div>
+              -20.0%
+            </span>
+          </div>
+          <h3 class="py-2 text-2xl font-semibold">$1,250.00</h3>
+          <div class="uk-flex items-center">
+            <h3 class="text-xm">Down 20% this period.</h3>
+            <div class="size-4 ml-2">
+              <uk-icon icon="trending-down"></uk-icon>
+            </div>
+          </div>
+          <p class="text-sm text-muted-foreground mb-2">Consecutive days of quiz completion.</p>
+        </div>
+
+      </div>
+
+      <div class="uk-container mt-6">
+        <div class="uk-overflow-auto">
+          <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
+            <thead>
+              <tr>
+                <th class="uk-table-shrink"></th>
+                <th class="uk-table-shrink">Preserve</th>
+                <th class="uk-table-expand">Expand + Link</th>
+                <th class="w-40">Truncate</th>
+                <th class="uk-table-shrink text-nowrap">Shrink + Nowrap</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input class="uk-checkbox" type="checkbox" aria-label="Checkbox" />
+                </td>
+                <td>
+                  <img class="uk-preserve-width rounded-full"src="https://franken-ui.dev/images/avatar.jpg"width="40"height="40"alt=""/>
+                </td>
+                <td class="uk-table-link">
+                  <a class="uk-link-reset" href="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor.</a>
+                </td>
+                <td class="uk-text-truncate">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor.
+                </td>
+                <td class="text-nowrap">Lorem ipsum dolor</td>
+              </tr>
+              <tr>
+                <td>
+                  <input class="uk-checkbox" type="checkbox" aria-label="Checkbox" />
+                </td>
+                <td>
+                  <img class="uk-preserve-width rounded-full"src="https://franken-ui.dev/images/avatar.jpg"width="40"height="40"alt=""/>
+                </td>
+                <td class="uk-table-link">
+                  <a class="uk-link-reset" href="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor.
+                  </a>
+                </td>
+                <td class="uk-text-truncate">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor.
+                </td>
+                <td class="text-nowrap">Lorem ipsum dolor</td>
+              </tr>
+              <tr>
+                <td>
+                  <input class="uk-checkbox" type="checkbox" aria-label="Checkbox" />
+                </td>
+                <td>
+                  <img class="uk-preserve-width rounded-full"src="https://franken-ui.dev/images/avatar.jpg"width="40"height="40"alt=""/>
+                </td>
+                <td class="uk-table-link">
+                  <a class="uk-link-reset" href=""
+                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor.</a
+                  >
+                </td>
+                <td class="uk-text-truncate">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor.
+                </td>
+                <td class="text-nowrap">Lorem ipsum dolor</td>
+              </tr>
+              <tr>
+                <td>
+                  <input class="uk-checkbox" type="checkbox" aria-label="Checkbox" />
+                </td>
+                <td>
+                  <img class="uk-preserve-width rounded-full"src="https://franken-ui.dev/images/avatar.jpg"width="40"height="40"alt=""/>
+                </td>
+                <td class="uk-table-link">
+                  <a class="uk-link-reset" href=""
+                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor.</a
+                  >
+                </td>
+                <td class="uk-text-truncate">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor.
+                </td>
+                <td class="text-nowrap">Lorem ipsum dolor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
