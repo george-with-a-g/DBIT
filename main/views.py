@@ -85,6 +85,7 @@ def signup(request):
             context = {
                 'error_message': f'Error creating account: {str(e)}'
             }
+            print(context)
             return render(request, 'main/authentication/signup2.html', context)
     return render(request, 'main/authentication/signup2.html')
 
