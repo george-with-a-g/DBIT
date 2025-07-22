@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from .models import Question, ExtraUserInfo, UserType, UserTypeAllocation
+from .models import Question, ExtraUserInfo, UserType, UserTypeAllocation, UserTest, UserTestQuestion, UserAverageScore
 from datetime import datetime
 from django.utils import timezone
+import json
 
 # Create your views here.
 @login_required(login_url='auth-login')
@@ -163,4 +164,11 @@ def auth(request):
     return render(request, 'main/authentication/index.html')
 
 def log_test_score(request):
-    return JsonResponse({"work":"success"})
+    if request.method == "POST":
+        # Get question results
+
+        # Get user average score
+        user_id = request.POST.get('user_id')
+        average_score = request.POST.get('average_score')
+        return JsonResponse({"work":"success"})
+

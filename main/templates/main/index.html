@@ -246,6 +246,7 @@
               try {
                 // Construct the payload to be sent in the POST request body.
                 // It's good practice to send data in JSON format.
+		url = url + "/logtestscore/";
                 const payload = {
                   answered_questions: answeredQuestionsData,
                   score: score,
@@ -302,6 +303,27 @@
                 }
                 return cookieValue;
             }
+	    function getAnsweredQuestionsData() {
+		    const answeredQuestions = [];
+		    const questionItems = document.querySelectorAll('.question_item.is--answered');
+
+		    questionItems.forEach((questionItem, index) => {
+			const questionText = questionItem.querySelector('h2').textContent;
+			const selectedOption = questionItem.querySelector('.option.is--selected');
+			const optionText = selectedOption.querySelector('.option_text').textContent;
+			//const isCorrect = selectedOption.find('.status').classList.contains('correct');
+			    const isCorrect = selectedOption.querySelector('.status').classList.contains('correct');
+
+			answeredQuestions.push({
+			    questionIndex: index,
+			    questionText: questionText,
+			    selectedAnswer: optionText,
+			    isCorrect: isCorrect
+			});
+		    });
+
+		    return answeredQuestions;
+		}
 
             updateAnswerCount();
                         
@@ -331,8 +353,9 @@
                   $('body').css('overflow', 'hidden');
 			const currentUrl = window.location.origin;
 			let correctPercentage = Math.round(($(".answered-correct").length / totalQuestions) * 100);
-			console.log(answeredQuestions);
-			//sendQuizResults(currentUrl, answeredQuestions, correctPercentage )
+			 const answeredQuestionsData = getAnsweredQuestionsData();
+			console.log(answeredQuestionsData);
+			sendQuizResults(currentUrl, answeredQuestions, correctPercentage )
                   
                 }, 2800);
               }
