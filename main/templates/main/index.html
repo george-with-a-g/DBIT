@@ -329,7 +329,10 @@
                 setTimeout(() => {
                   $(".hero").addClass("is--complete");
                   $('body').css('overflow', 'hidden');
-
+			const currentUrl = window.location.origin;
+			let correctPercentage = Math.round(($(".answered-correct").length / totalQuestions) * 100);
+			console.log(answeredQuestions);
+			//sendQuizResults(currentUrl, answeredQuestions, correctPercentage )
                   
                 }, 2800);
               }

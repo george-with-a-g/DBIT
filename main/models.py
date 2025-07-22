@@ -60,6 +60,7 @@ class UserTest(models.Model):
 
 class UserTestQuestion(models.Model):
     test = models.ForeignKey(UserTest, null=False, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, null=True, on_delete=models.CASCADE)
     correct_answer = models.BooleanField()
 
 class UserAverageScore(models.Model):
